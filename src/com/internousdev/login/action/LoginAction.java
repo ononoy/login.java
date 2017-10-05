@@ -23,16 +23,20 @@ public class LoginAction extends ActionSupport implements SessionAware {
 
 		public String execute() {
 		String ret = ERROR;
+
+		//インスタンス化LoginDAO
 		LoginDAO dao = new LoginDAO();
 		LoginDTO dto = new LoginDTO();
 
 		dto = dao.select(name,password);
-
+		//JSP画面と裏Actionと裏Daoと裏DBConectorとmysqlが繋げる
 		if(name.equals(dto.getName())) {
 			if(password.equals(dto.getPassword())){
 				ret = SUCCESS ;
 			}
 		}
+	
+		
 		session.put("name", dto.getName());
 		return ret;
 		}
@@ -44,7 +48,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		public void setName(String name) {
 		this.name = name;
 		}
-		
+
 		public String getPassword() {
 		return password;
 		}
@@ -54,7 +58,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		public Map<String, Object> getSession() {
 		return session;
 		}
-		
+
 		public void setSession(Map<String, Object> session) {
 		this.session = session;
 		}

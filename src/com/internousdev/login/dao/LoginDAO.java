@@ -29,10 +29,12 @@ public class LoginDAO {
 		ps.setString(1, name);
 		ps.setString (2, password);
 		ResultSet rs=ps.executeQuery();
+
+		//次の行がもしあれば1行づつチェックしてね
 		if (rs.next()) {
 		dto.setName(rs.getString("user_name"));
 		dto.setPassword(rs.getString("password"));
-		}
+		} //try-catch例外SQLExceptionが情報貯めてeのprintStackTraceで例外情報を出力する
 		} catch (SQLException e ) {
 		e.printStackTrace();
 		}
