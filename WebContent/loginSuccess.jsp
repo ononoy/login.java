@@ -12,7 +12,11 @@
 <h1>ログインに成功しました。</h1>
 ようこそ<br>
 
-<s:property value = "name"/>さん
+<s:property value = "#session.name"/>さん
+<!--#sessionはsession機能の使用宣言、.要素名で要素の中身を取り出す-->
+<br>
+<s:property value = "#session.pass"/>
+<br>ログインできたね！
 
 </body>
 </html>
